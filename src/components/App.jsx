@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function App() {
-  // действия при изменении города в поле ввода
   const [city, setCity] = useState('');
 
-  // действия с данными погоды
   const [weather, setWeather] = useState({});
 
-  // обработчик на Enter
   const search = (evt) => {
     if (evt.key === 'Enter') {
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=c7616da4b68205c2f3ae73df2c31d177`)
@@ -20,7 +17,6 @@ export default function App() {
     }
   };
 
-  // форматирование даты
   const format_date = (d) => {
     const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
     const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
@@ -57,8 +53,6 @@ export default function App() {
               value={city}
               onKeyPress={search}
             />
-            {/* <button type="button" onClick={search2} className="btn btn-success">Enter</button> */}
-
           </motion.div>
         </div>
         {(typeof weather.main !== 'undefined') ? (
@@ -81,7 +75,6 @@ export default function App() {
               <div id="icon">
                 <img id="wicon" src={`${`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}`} alt="Weather icon" />
               </div>
-
             </div>
           </div>
         ) : ('')}

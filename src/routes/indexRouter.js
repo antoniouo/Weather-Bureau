@@ -4,7 +4,6 @@ import template from '../template';
 const route = express.Router();
 
 route.get('/', async (req, res) => {
-  // res.send('Main Page')
   res.send(template({ path: req.originalUrl }));
 });
 
